@@ -1,0 +1,231 @@
+/* --- CSS Variables for HuntersHorrorEasy Theme --- */
+:root {
+    --color-primary: #10b981; /* Emerald Green (primary accent) */
+    --color-secondary: #059669; /* Darker Green (secondary accent) */
+    --color-background-dark: #0f172a; /* Slate 900 */
+    --color-background-medium: #1e293b; /* Slate 800 */
+    --color-text-light: #ffffff; /* Pure white for main text/headings */
+    --color-text-medium: #e0e0e0; /* A slightly off-white for less important text */
+    --color-border: #334155; /* Slate 700 */
+
+    --font-family-heading: 'Orbitron', sans-serif; /* Techy / Futuristic horror */
+    --font-family-body: 'Inter', sans-serif; /* Clean body text */
+
+    --transition-speed: 0.3s ease-out;
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1.5rem;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.4); /* Green glow for accents */
+}
+
+/* --- Base Typography & Elements --- */
+body {
+    font-family: var(--font-family-body);
+    /* Dark mode background gradient */
+    background: linear-gradient(to bottom right, #1a202c, #0a3d4d); /* Deep dark blue to dark muted teal */
+    color: var(--color-text-medium); /* Default body text color */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    color: var(--color-text-light); /* Headings are white */
+    font-weight: 700;
+}
+
+/* General text elements that should be white/light */
+p, li {
+    color: var(--color-text-medium); /* Slightly off-white for body text */
+}
+
+a {
+    color: var(--color-secondary); /* Accent color for regular links */
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+a:hover {
+    color: var(--color-primary);
+}
+
+/* --- Animations --- */
+.animate-fadeIn {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s var(--transition-speed) forwards;
+}
+.animate-fadeIn.delay-150 { animation-delay: 0.15s; }
+.animate-fadeIn.delay-300 { animation-delay: 0.3s; }
+.animate-fadeIn.delay-450 { animation-delay: 0.45s; }
+.animate-fadeIn.delay-600 { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Navigation --- */
+/* Navbar text is set to text-text-light in JS, so it will be white */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color var(--transition-speed);
+    color: var(--color-text-light); /* Ensure nav links are white by default */
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary); /* Uses green accent */
+    transition: width var(--transition-speed);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+.nav-link:hover,.nav-link.active {
+    color: var(--color-primary); /* Hover/active color uses green accent */
+}
+
+/* Mobile menu specific styling */
+#mobile-menu a {
+    border-bottom: 1px solid var(--color-border);
+}
+#mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-primary); /* Uses green accent */
+    color: var(--color-background-dark); /* Contrast with button background */
+    font-weight: 600;
+    font-family: var(--font-family-heading);
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-light);
+    transition: all var(--transition-speed);
+}
+.btn-primary:hover {
+    background-color: var(--color-secondary); /* Uses darker green accent */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow); /* Green glow for accents */
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-background-medium);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light); /* Secondary button text is white */
+    font-weight: 600;
+    font-family: var(--font-family-heading);
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-light);
+    transition: all var(--transition-speed);
+}
+.btn-secondary:hover {
+    background-color: var(--color-border);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow); /* Green glow for accents */
+}
+
+/* --- Card Components (for Games, Blog) --- */
+.card {
+    background-color: var(--color-background-medium);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow); /* Green glow for accents */
+}
+
+/* --- Game Details Specific --- */
+.game-spec-item {
+    background-color: var(--color-background-dark);
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.platform-icon {
+    font-size: 1.5rem;
+    color: var(--color-secondary); /* Uses green accent */
+    margin-right: 0.5rem;
+}
+
+/* --- Contact Form --- */
+#contact-form input,
+#contact-form textarea {
+    background-color: var(--color-background-dark);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light); /* Input text is white */
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    width: 100%;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: var(--color-primary); /* Green focus ring */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5); /* Green focus ring */
+}
+/* Ensure labels for form are light */
+#contact-form label {
+    color: var(--color-text-light);
+}
+
+/* --- FAQ --- */
+.faq-question {
+    background-color: var(--color-background-dark);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    color: var(--color-text-light); /* FAQ question text is white */
+}
+.faq-question:hover {
+    background-color: #1a273b; /* Slightly lighter dark background */
+}
+.faq-answer {
+    padding: 1rem 1.5rem;
+    background-color: var(--color-background-medium);
+    border-bottom-left-radius: var(--border-radius-sm);
+    border-bottom-right-radius: var(--border-radius-sm);
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-medium); /* FAQ answer text is light gray */
+}
+.faq-question.faq-icon {
+    transition: transform var(--transition-speed);
+}
+.faq-question[aria-expanded="true"].faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Utility classes to avoid redundant inline styles */
+.min-h-screen-minus-nav-footer {
+    min-height: calc(100vh - 80px - 200px); /* Adjust based on actual nav/footer heights */
+}
